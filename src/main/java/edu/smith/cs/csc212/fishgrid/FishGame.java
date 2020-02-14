@@ -57,13 +57,15 @@ public class FishGame {
 		// Add a home!
 		home = world.insertFishHome();
 		
-		// TODO(lab) Generate some more rocks!
-		// TODO(lab) Make 5 into a constant, so it's easier to find & change.
-		for (int i=0; i<5; i++) {
+		
+		for (int i=0; i<Rock.NUM_ROCKS; i++) {
 			world.insertRockRandomly();
 		}
 		
-		// TODO(lab) Make the snail!
+		
+		for (int i=0;i<2;i++) {
+			world.insertSnailRandomly();
+		}
 		
 		// Make the player out of the 0th fish color.
 		player = new Fish(0, world);
@@ -121,8 +123,9 @@ public class FishGame {
 				
 				// Remove from world.
 				// TODO(lab): add to found instead! (So we see objectsFollow work!)
-				justFound.remove();
-				
+				//justFound.remove();
+				missing.remove(justFound);
+				found.add(justFound);
 				// Increase score when you find a fish!
 				score += 10;
 			}
@@ -144,6 +147,7 @@ public class FishGame {
 		for (Fish lost : missing) {
 			// 30% of the time, lost fish move randomly.
 			if (rand.nextDouble() < 0.3) {
+				lost.moveRandomly();
 				// TODO(lab): What goes here?
 			}
 		}

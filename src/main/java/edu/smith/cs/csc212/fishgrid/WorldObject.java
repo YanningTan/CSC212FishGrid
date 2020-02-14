@@ -178,7 +178,7 @@ public abstract class WorldObject {
 	/**
 	 * Move randomly! 
 	 */
-	public void moveRandomly() {
+	public  void moveRandomly() {
 		// Can we move right, left, down, or up?
 		boolean canMove = 
 				world.canSwim(this, x+1, y) ||
